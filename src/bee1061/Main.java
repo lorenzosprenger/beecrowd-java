@@ -6,41 +6,43 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Dia ");
-        int diaInicio = sc.nextInt();
+        int dia = Integer.parseInt(sc.nextLine().split(" ")[1]);
 
-        int horaInicio = sc.nextInt();
-        sc.next(); // consome ":"
-        int minInicio = sc.nextInt();
-        sc.next(); // consome ":"
-        int segInicio = sc.nextInt();
+        String[] h1 = sc.nextLine().split(":");
 
-        System.out.print("Dia ");
-        int diaFim = sc.nextInt();
+        int hr1 = Integer.parseInt(h1[0].trim());
+        int mn1 = Integer.parseInt(h1[1].trim());
+        int seg1 = Integer.parseInt(h1[2].trim());
 
-        int horaFim = sc.nextInt();
-        sc.next(); // consome ":"
-        int minFim = sc.nextInt();
-        sc.next(); // consome ":"
-        int segFim = sc.nextInt();
+        int temp1 = seg1 + mn1 * 60 + hr1 * 60 * 60 + dia * 24 * 60 * 60;
 
-        // Conversão para segundos
-        int totalSegInicio = segInicio + (minInicio * 60) + (horaInicio * 3600) + (diaInicio * 86400);
-        int totalSegFim = segFim + (minFim * 60) + (horaFim * 3600) + (diaFim * 86400);
+        int dia2 = Integer.parseInt(sc.nextLine().split(" ")[1]);
 
-        int duracaoSegundos = totalSegFim - totalSegInicio;
+        String[] h2 = sc.nextLine().split(":");
 
-        int dias = duracaoSegundos / 86400;
-        int resto = duracaoSegundos % 86400;
-        int horas = resto / 3600;
-        resto = resto % 3600;
-        int minutos = resto / 60;
-        int segundos = resto % 60;
+        int hr2 = Integer.parseInt(h2[0].trim());
+        int mn2 = Integer.parseInt(h2[1].trim());
+        int seg2 = Integer.parseInt(h2[2].trim());
 
-        System.out.println(dias + " dia(s)");
-        System.out.println(horas + " hora(s)");
-        System.out.println(minutos + " minuto(s)");
-        System.out.println(segundos + " segundo(s)");
+        int temp2 = seg2 + mn2 * 60 + hr2 * 60 * 60 + dia2 * 24 * 60 * 60;
+
+        int div = temp2 - temp1;
+
+        int d = div / (24 * 60 * 60);
+        div = div % (24 * 60 * 60);
+
+        int h = div / (60 * 60);
+        div = div % (60 * 60);
+
+        int m = div / 60;
+        div = div % 60;
+
+        int s = div;
+
+        System.out.println(d + " dia(s)");
+        System.out.println(h + " hora(s)");
+        System.out.println(m + " minuto(s)");
+        System.out.println(s + " segundo(s)");
 
         sc.close();
     }
